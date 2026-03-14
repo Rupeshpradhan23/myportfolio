@@ -10,15 +10,47 @@ const LeetCodeStats = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch('https://leetcode-stats.vercel.app/api?username=rupeshpradhan01');
+        const query = `
+          query {
+            userProfile(username: "rupeshpradhan01") {
+              username
+              submitStats {
+                acSubmissionNum {
+                  difficulty
+                  count
+                  submissions
+                }
+              }
+            }
+          }
+        `;
+        const response = await fetch('https://leetcode.com/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query }),
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch LeetCode stats');
         }
         const data = await response.json();
-        if (data.status === 'success') {
-          setStats(data);
+        if (data.data && data.data.userProfile) {
+          const submitStats = data.data.userProfile.submitStats.acSubmissionNum;
+          const statsData = {
+            totalSolved: submitStats.reduce((sum, item) => sum + item.count, 0),
+            easySolved: submitStats.find(item => item.difficulty === 'Easy')?.count || 0,
+            mediumSolved: submitStats.find(item => item.difficulty === 'Medium')?.count || 0,
+            hardSolved: submitStats.find(item => item.difficulty === 'Hard')?.count || 0,
+            acceptanceRate: 0, // Not available in this API
+            totalQuestions: 0, // Not available
+            totalEasy: 0,
+            totalMedium: 0,
+            totalHard: 0,
+          };
+          setStats(statsData);
         } else {
-          throw new Error('Invalid response from API');
+          throw new Error('User not found or invalid response');
         }
       } catch (err) {
         setError(err.message);
@@ -31,7 +63,7 @@ const LeetCodeStats = () => {
   }, []);
 
   const StatCard = ({ title, value, total, icon: Icon, color }) => {
-    const percentage = total ? Math.round((value / total) * 100) : 0;
+    const percentage = total ? Math.round((value / total) * 100) : null;
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -49,15 +81,17 @@ const LeetCodeStats = () => {
           </div>
         </div>
         <h3 className="text-lg font-semibold text-slate-200 mb-2">{title}</h3>
-        {total && (
-          <div className="w-full bg-slate-700 rounded-full h-2 mb-2">
-            <div
-              className={`h-2 rounded-full ${color} transition-all duration-1000`}
-              style={{ width: `${percentage}%` }}
-            ></div>
-          </div>
+        {percentage !== null && (
+          <>
+            <div className="w-full bg-slate-700 rounded-full h-2 mb-2">
+              <div
+                className={`h-2 rounded-full ${color} transition-all duration-1000`}
+                style={{ width: `${percentage}%` }}
+              ></div>
+            </div>
+            <div className="text-sm text-slate-400">{percentage}%</div>
+          </>
         )}
-        {total && <div className="text-sm text-slate-400">{percentage}%</div>}
       </motion.div>
     );
   };
@@ -116,40 +150,30 @@ const LeetCodeStats = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatCard
             title="Total Solved"
             value={stats.totalSolved}
-            total={stats.totalQuestions}
             icon={Code}
             color="bg-blue-500"
           />
           <StatCard
             title="Easy Solved"
             value={stats.easySolved}
-            total={stats.totalEasy}
             icon={Target}
             color="bg-green-500"
           />
           <StatCard
             title="Medium Solved"
             value={stats.mediumSolved}
-            total={stats.totalMedium}
             icon={TrendingUp}
             color="bg-yellow-500"
           />
           <StatCard
             title="Hard Solved"
             value={stats.hardSolved}
-            total={stats.totalHard}
             icon={Award}
             color="bg-red-500"
-          />
-          <StatCard
-            title="Acceptance Rate"
-            value={`${stats.acceptanceRate}%`}
-            icon={TrendingUp}
-            color="bg-purple-500"
           />
         </div>
       </div>
