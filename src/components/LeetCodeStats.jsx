@@ -10,7 +10,7 @@ const LeetCodeStats = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch('https://leetcode-stats.vercel.app/api?username=YOUR_USERNAME');
+        const response = await fetch('https://leetcode-stats.vercel.app/api?username=rupeshpradhan01');
         if (!response.ok) {
           throw new Error('Failed to fetch LeetCode stats');
         }
