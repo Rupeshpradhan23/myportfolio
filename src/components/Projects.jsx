@@ -37,7 +37,7 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "AI Virtual Physical Therapy App",
+    title: "AI Virtual Physical Therapy ",
     description: "A proof-of-concept application utilizing machine learning algorithms to assist users with physical therapy exercises through their webcam.",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=720&auto=format&fit=crop",
     tech: ["Python", "TensorFlow", "React", "OpenCV"],

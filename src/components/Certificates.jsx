@@ -9,7 +9,11 @@ const certificatesData = [
     issuer: "Udemy",
     date: "Aug’ 25",
     icon: "🤖",
-    link: "https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_014157710267834368237/1-11ed36ca-04b4-4bd3-b05a-db2851ae1095.pdf"
+    link: "https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_014157710267834368237/1-11ed36ca-04b4-4bd3-b05a-db2851ae1095.pdf",
+    points: [
+      "Acquired comprehensive knowledge of Generative AI principles and the architecture behind Large Language Models (LLMs).",
+      "Gained hands-on experience utilizing ChatGPT for automated code generation, complex debugging, and workflow optimization."
+    ]
   },
   {
     id: 2,
@@ -17,7 +21,11 @@ const certificatesData = [
     issuer: "NPTEL",
     date: "Apr’ 25",
     icon: "☁️",
-    link: "https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs11/Course/NPTEL25CS11S133730084704245548.pdf"
+    link: "https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs11/Course/NPTEL25CS11S133730084704245548.pdf",
+    points: [
+      "Developed a solid foundation in core cloud computing concepts, including PaaS, IaaS, and SaaS deployment models.",
+      "Explored the integration of cloud infrastructure with real-time applications, focusing on scalable and distributed architectures."
+    ]
   },
   {
     id: 3,
@@ -25,7 +33,11 @@ const certificatesData = [
     issuer: "Coursera",
     date: "Nov’ 24",
     icon: "🌐",
-    link: "https://www.coursera.org/account/accomplishments/verify/XD2LC273Q52B"
+    link: "https://www.coursera.org/account/accomplishments/verify/XD2LC273Q52B",
+    points: [
+      "Mastered the complexities of the TCP/IP suite, analyzing transport layer protocols and intricate routing mechanisms.",
+      "Enhanced troubleshooting capabilities for resolving advanced network connectivity issues and managing data transmission."
+    ]
   },
   {
     id: 4,
@@ -33,7 +45,11 @@ const certificatesData = [
     issuer: "Coursera",
     date: "Sep’ 24",
     icon: "🔌",
-    link: "https://www.coursera.org/account/accomplishments/verify/G0YCSTNK69RE"
+    link: "https://www.coursera.org/account/accomplishments/verify/G0YCSTNK69RE",
+    points: [
+      "Explored the fundamental layers of networking, from physical hardware transmission to application layer interactions.",
+      "Practiced configuring fundamental IP addressing schemas and grasping essential network security protocols."
+    ]
   }
 ];
 
@@ -79,11 +95,21 @@ const Certificates = () => {
                   href={cert.link} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors leading-snug no-underline active:no-underline visited:no-underline cursor-pointer"
+                  className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors leading-snug no-underline active:no-underline visited:no-underline cursor-pointer block"
                 >
                   {cert.title}
                 </a>
-                <div className="flex flex-wrap items-center gap-4 text-sm mt-3">
+                
+                <ul className="mt-3 mb-4 space-y-2">
+                  {cert.points.map((point, i) => (
+                    <li key={i} className="text-sm text-slate-300 flex items-start leading-relaxed">
+                      <span className="text-primary mr-2 mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0 opacity-80"></span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap items-center gap-4 text-sm mt-4 pt-4 border-t border-white/5">
                   <span className="flex items-center gap-1.5 text-secondary font-medium bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
                     <Award size={14} />
                     {cert.issuer}
