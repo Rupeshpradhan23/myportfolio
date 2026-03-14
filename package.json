@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Rupeshpradhan23.github.io/MyPortfolio",
+  "homepage": "https://Rupeshpradhan23.github.io/myportfolio",
   "scripts": {
     "dev": "concurrently \"vite\" \"node server.js\"",
     "build": "vite build",
