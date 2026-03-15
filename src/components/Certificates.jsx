@@ -8,7 +8,7 @@ const certificatesData = [
     title: "Master Generative AI and Generative AI Tools including ChatGPT",
     issuer: "Udemy",
     date: "Aug’ 25",
-    icon: "🤖",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Udemy_logo.svg",
     link: "https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_014157710267834368237/1-11ed36ca-04b4-4bd3-b05a-db2851ae1095.pdf",
     points: [
       "Acquired comprehensive knowledge of Generative AI principles and the architecture behind Large Language Models (LLMs).",
@@ -20,7 +20,7 @@ const certificatesData = [
     title: "Cloud Computing",
     issuer: "NPTEL",
     date: "Apr’ 25",
-    icon: "☁️",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/NPTEL-logo.png",
     link: "https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs11/Course/NPTEL25CS11S133730084704245548.pdf",
     points: [
       "Developed a solid foundation in core cloud computing concepts, including PaaS, IaaS, and SaaS deployment models.",
@@ -32,7 +32,7 @@ const certificatesData = [
     title: "TCP/IP and Advanced Topics",
     issuer: "Coursera",
     date: "Nov’ 24",
-    icon: "🌐",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/63/Coursera_logo.svg",
     link: "https://www.coursera.org/account/accomplishments/verify/XD2LC273Q52B",
     points: [
       "Mastered the complexities of the TCP/IP suite, analyzing transport layer protocols and intricate routing mechanisms.",
@@ -44,7 +44,7 @@ const certificatesData = [
     title: "The Bits and Bytes of Computer Networking",
     issuer: "Coursera",
     date: "Sep’ 24",
-    icon: "🔌",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/63/Coursera_logo.svg",
     link: "https://www.coursera.org/account/accomplishments/verify/G0YCSTNK69RE",
     points: [
       "Explored the fundamental layers of networking, from physical hardware transmission to application layer interactions.",
@@ -89,9 +89,14 @@ const Certificates = () => {
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-14 h-14 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 group-hover:border-primary/50 transition-all shadow-inner"
+                className="w-14 h-14 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-primary/50 transition-all shadow-inner"
               >
-                {cert.icon}
+                <img
+                  src={cert.logo}
+                  alt={`${cert.issuer} logo`}
+                  className="w-10 h-10 object-contain"
+                  loading="lazy"
+                />
               </a>
               
               {/* Content Container */}
