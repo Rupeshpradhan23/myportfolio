@@ -85,9 +85,14 @@ const Certificates = () => {
               className="glass p-6 rounded-2xl border border-white/5 hover:border-primary/40 hover:bg-white/10 transition-all group flex items-start gap-4"
             >
               {/* Icon Container */}
-              <div className="w-14 h-14 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 group-hover:border-primary/50 transition-all shadow-inner">
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-14 h-14 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 group-hover:border-primary/50 transition-all shadow-inner"
+              >
                 {cert.icon}
-              </div>
+              </a>
               
               {/* Content Container */}
               <div className="flex-1">
