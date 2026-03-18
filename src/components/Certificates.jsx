@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Calendar } from 'lucide-react';
+import { Award, Calendar, Code, Trophy, ExternalLink } from 'lucide-react';
 
 const certificatesData = [
   {
@@ -53,6 +53,33 @@ const certificatesData = [
   }
 ];
 
+const activitiesData = [
+  {
+    id: 1,
+    title: "Hack-IoT Event",
+    type: "Hackathon / Technical Event",
+    organization: "Lovely Professional University (School of Electronics and Electrical Engineering)",
+    date: "February 16–17, 2024",
+    icon: <Trophy size={28} />,
+    description: "Participated in a 2-day Hack-IoT event where I collaborated in a team to explore and develop IoT-based solutions. Enhanced skills in problem-solving, teamwork, and real-world application development under time constraints.",
+    skills: ["IoT", "Teamwork", "Problem Solving", "Innovation"],
+    link: "#",
+    linkText: "View Certificate",
+  },
+  {
+    id: 2,
+    title: "Problem Solving on LeetCode",
+    type: "Competitive Coding",
+    organization: "LeetCode",
+    date: "Present",
+    icon: <Code size={28} />,
+    description: "Actively solving Data Structures and Algorithms problems on LeetCode to strengthen problem-solving skills and coding efficiency. Focused on topics like arrays, trees, recursion, and dynamic programming.",
+    skills: ["DSA", "Algorithm Design", "Logical Thinking", "Optimization"],
+    link: "https://leetcode.com/", 
+    linkText: "View Profile",
+  }
+];
+
 const Certificates = () => {
   return (
     <section id="certificates" className="py-24 relative overflow-hidden">
@@ -67,7 +94,7 @@ const Certificates = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Certifications & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Achievements</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Certifications, Activities & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Achievements</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
           <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-lg">
             Continuous learning and official recognitions that validate my expertise across Generative AI, Cloud Computing, and Networking.
@@ -127,6 +154,82 @@ const Certificates = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* --- Activities & Achievements Section --- */}
+        <div className="mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">Activities & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Participation</span></h3>
+            <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {activitiesData.map((activity, index) => (
+              <motion.div
+                key={activity.id}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="glass p-8 rounded-2xl border border-white/5 hover:border-primary/40 hover:bg-white/10 transition-all group flex flex-col h-full relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none transition-all duration-500 group-hover:bg-primary/20"></div>
+                
+                <div className="flex items-center gap-5 mb-6 relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-white/10 flex items-center justify-center shrink-0 shadow-inner group-hover:border-primary/50 group-hover:scale-110 transition-all duration-300 text-primary">
+                    {activity.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors">{activity.title}</h4>
+                    <p className="text-slate-400 text-sm mt-1">{activity.type}</p>
+                  </div>
+                </div>
+
+                <p className="text-slate-300 text-[15px] leading-relaxed mb-8 flex-1 relative z-10">
+                  {activity.description}
+                </p>
+
+                <div className="mb-8 relative z-10">
+                  <div className="flex flex-wrap gap-2">
+                    {activity.skills.map((skill, i) => (
+                      <span key={i} className="text-xs font-semibold tracking-wide px-3 py-1.5 bg-primary/5 text-primary rounded-full border border-primary/10">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 text-sm pt-6 border-t border-white/10 mt-auto relative z-10">
+                  <div className="flex flex-col gap-2.5">
+                    <span className="flex items-center gap-2 text-secondary font-medium">
+                      <Award size={16} className="shrink-0" />
+                      <span className="truncate max-w-[200px] sm:max-w-[220px]" title={activity.organization}>{activity.organization}</span>
+                    </span>
+                    <span className="flex items-center gap-2 text-slate-400">
+                      <Calendar size={16} className="shrink-0" />
+                      {activity.date}
+                    </span>
+                  </div>
+                  
+                  <a 
+                    href={activity.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-white/5 hover:bg-primary/20 text-white hover:text-primary border border-white/10 hover:border-primary/30 px-5 py-2.5 rounded-xl font-medium transition-all duration-300 whitespace-nowrap"
+                  >
+                    <span>{activity.linkText}</span>
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
