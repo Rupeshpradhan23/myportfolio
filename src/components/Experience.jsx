@@ -84,7 +84,7 @@ const Experience = () => {
                   
                   <h4 className="text-secondary font-medium mb-4">{item.subtitle}</h4>
                   
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className="text-slate-400 text-sm leading-relaxed whitespace-pre-line">
                     {item.description}
                   </p>
                 </div>
