@@ -75,7 +75,7 @@ const activitiesData = [
     icon: <Code size={28} />,
     description: "Actively solving Data Structures and Algorithms problems on LeetCode to strengthen problem-solving skills and coding efficiency. Focused on topics like arrays, trees, recursion, and dynamic programming.",
     skills: ["DSA", "Algorithm Design", "Logical Thinking", "Optimization"],
-    link: "https://leetcode.com/", 
+    link: "https://leetcode.com/u/rupeshpradhan01/", 
     linkText: "View Profile",
   }
 ];
