@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Calendar, Code, Trophy, ExternalLink } from 'lucide-react';
+import HackathonCert from '../assets/Hackathon.jpeg';
 
 const certificatesData = [
   {
@@ -63,7 +64,7 @@ const activitiesData = [
     icon: <Trophy size={28} />,
     description: "Participated in a 2-day Hack-IoT event where I collaborated in a team to explore and develop IoT-based solutions. Enhanced skills in problem-solving, teamwork, and real-world application development under time constraints.",
     skills: ["IoT", "Teamwork", "Problem Solving", "Innovation"],
-    link: "#",
+    link: HackathonCert,
     linkText: "View Certificate",
   },
   {
@@ -94,7 +95,7 @@ const Certificates = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Certifications, Activities & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Achievements</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Certifications <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"></span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
           <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-lg">
             Continuous learning and official recognitions that validate my expertise across Generative AI, Cloud Computing, and Networking.

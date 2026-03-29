@@ -21,8 +21,8 @@ const projectsData = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=720&auto=format&fit=crop",
     tech: ["React", "CSS", "Firebase", "Chart.js"],
     category: "Frontend",
-    github: "https://github.com",
-    live: "https://example.com",
+    github: "https://github.com/Rupeshpradhan23/CampusCore",
+    live: "https://github.com/Rupeshpradhan23/CampusCore",
     featured: true
   },
   {
